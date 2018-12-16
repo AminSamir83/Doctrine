@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Affichage de Personne{% endblock %}
+
+{% block body %}
+    <h1>Affichage de Personne</h1>
+    {%  if  personne  %}
+
+        <table class="table" style="margin-left:auto;margin-right:auto;display:block;width:100%;">
+        <thead class="thead-dark">
+
+        <th>
+            Prénom
+        </th>
+        <th>
+            Nom
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            Image
+        </th>
+
+        </tr>
+        </thead>
+
+
+        <tr>
+            <td>
+                <div> {{  personne.prenom}}</div></td><td><div> {{  personne.nom}}</div></td>
+            <td>
+                <div> {{ personne.age}}</div></td>
+            <td>
+                {% if personne.path is null %}
+                    <img style="border-radius: 50%" src="{{ asset('images/user.png ') }}">
+
+                {% else %}
+                    <img style="border-radius: 50%;width:100px;height:100px" src="{{ asset('images/'~personne.path)|default(asset('images/user.png ')) }}">
+                {%  endif %}
+            </td></tr>
+    {%  endif %}
+{% endblock %}
